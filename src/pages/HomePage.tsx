@@ -1,4 +1,38 @@
+import { useCallback, useEffect, useState } from "react";
 import { homeContent } from "../data/siteContent";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "../components/ui/carousel";
+
+const heroSlides = [
+  {
+    image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&q=80",
+    title: "VALUE CREATION FROM\nREAL ESTATE DEVELOPMENT",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?w=1920&q=80",
+    title: "INVESTING IN\nSOUTH FLORIDA",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1530089711124-9ca31fb9e863?w=1920&q=80",
+    title: "BUILDING VALUE IN\nHOUSTON, TEXAS",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?w=1920&q=80",
+    title: "EXPANDING INTO\nMEXICO CITY",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
+    title: "REAL ESTATE\nINVESTMENT OPPORTUNITIES",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920&q=80",
+    title: "NEXT PROJECT\nOPPORTUNITIES",
+  },
+];
 
 const partners = [
   "CDMX HOMES",
@@ -10,24 +44,72 @@ const partners = [
 ];
 
 export default function HomePage() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (!api) return;
+    setCurrent(api.selectedScrollSnap());
+  }, [api]);
+
+  useEffect(() => {
+    if (!api) return;
+    onSelect();
+    api.on("select", onSelect);
+
+    // Autoplay
+    const interval = setInterval(() => {
+      if (api.canScrollNext()) {
+        api.scrollNext();
+      } else {
+        api.scrollTo(0);
+      }
+    }, 5000);
+
+    return () => {
+      api.off("select", onSelect);
+      clearInterval(interval);
+    };
+  }, [api, onSelect]);
+
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative h-[70vh] min-h-[500px] bg-[#335264] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&q=80')] bg-cover bg-center opacity-40" />
-        <div className="relative z-10 text-center text-white px-6">
-          <h1 className="text-4xl md:text-5xl font-light tracking-wider uppercase leading-tight">
-            VALUE CREATION FROM
-            <br />
-            REAL ESTATE DEVELOPMENT
-          </h1>
-        </div>
+      {/* Hero Carousel */}
+      <section className="relative">
+        <Carousel
+          opts={{ loop: true }}
+          setApi={setApi}
+          className="w-full"
+        >
+          <CarouselContent className="ml-0">
+            {heroSlides.map((slide, i) => (
+              <CarouselItem key={i} className="pl-0 relative">
+                <div className="relative h-[70vh] min-h-[500px] bg-[#335264] flex items-center justify-center overflow-hidden">
+                  <div
+                    className="absolute inset-0 bg-cover bg-center opacity-40"
+                    style={{ backgroundImage: `url('${slide.image}')` }}
+                  />
+                  <div className="relative z-10 text-center text-white px-6">
+                    <h1 className="text-3xl md:text-5xl font-light tracking-wider uppercase leading-tight whitespace-pre-line">
+                      {slide.title}
+                    </h1>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+
         {/* Dots indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-          {[0, 1, 2, 3, 4, 5].map((i) => (
-            <div
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          {heroSlides.map((_, i) => (
+            <button
               key={i}
-              className={`w-2.5 h-2.5 rounded-full ${i === 0 ? "bg-white" : "bg-white/50"}`}
+              className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                i === current ? "bg-white" : "bg-white/50"
+              }`}
+              onClick={() => api?.scrollTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
             />
           ))}
         </div>

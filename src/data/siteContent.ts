@@ -35,27 +35,27 @@ export const navigationLinks = [
     label: "OUR PROJECTS",
     path: "/our-market",
     children: [
-      { label: "Biltmore Parc (Miami)", path: "/our-market#biltmore-parc" },
-      { label: "26 Santillane (Miami)", path: "/our-market#26-santillane" },
-      { label: "300 Majorca (Miami)", path: "/our-market#300-majorca" },
-      { label: "107 Valencia (Miami)", path: "/our-market#107-valencia" },
+      { label: "Biltmore Parc (Miami)", path: "/properties/biltmore-parc" },
+      { label: "26 Santillane (Miami)", path: "/properties/26-santillane" },
+      { label: "300 Majorca (Miami)", path: "/properties/300-majorca" },
+      { label: "701 Valencia (Miami)", path: "/properties/701-valencia" },
       {
         label: "1008 E Ponce de Leon (Miami)",
-        path: "/our-market#1008-ponce",
+        path: "/properties/1008-e-ponce-de-leon",
       },
-      { label: "Querétaro 37 (CDMX)", path: "/our-market#queretaro-37" },
-      { label: "Amsterdam 223 (CDMX)", path: "/our-market#amsterdam-223" },
+      { label: "Querétaro 37 (CDMX)", path: "/properties/queretaro-37" },
+      { label: "Amsterdam 223 (CDMX)", path: "/properties/amsterdam-223" },
       {
         label: "2104 Bringhurst St (Houston)",
-        path: "/our-market#2104-bringhurst",
+        path: "/properties/2104-bringhurst",
       },
       {
         label: "6507 Bella Noche Dr (Houston)",
-        path: "/our-market#6507-bella-noche",
+        path: "/properties/6507-bella-noche",
       },
       {
         label: "BAYTOWN, TX (Houston)",
-        path: "/our-market#baytown",
+        path: "/properties/baytown-tx",
       },
     ],
   },
@@ -588,3 +588,205 @@ Contact Us
 
 If you have any questions about this Privacy Policy, please contact us.`,
 };
+
+export interface PropertyData {
+  slug: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  details: Record<string, string>;
+  highlights?: string[];
+  city: "miami" | "houston" | "mexico-city";
+}
+
+export const propertiesData: PropertyData[] = [
+  {
+    slug: "biltmore-parc",
+    title: "Biltmore Parc",
+    subtitle: "High-End Residences",
+    description:
+      "Built in the heart of the exclusive Biltmore Section of Coral Gables, within walking distance of the Coral Gables Business District, Miracle Mile, Riviera Club, and The Biltmore Hotel. From golf to shopping & dining, residents of Biltmore Parc enjoy the privileges of living in a tranquil and green setting just steps away from the urban core.\n\nThis is the highest priced new multifamily residential construction in the city.",
+    details: {
+      "Type of Asset": "High-End Multifamily Residential",
+      Address: "718 Valencia Avenue, Coral Gables. Florida 33134",
+      "Year Built": "2017",
+      Units: "32 Units / 5 levels",
+      "Building Size": "67,736 Sq Ft",
+    },
+    city: "miami",
+  },
+  {
+    slug: "300-majorca",
+    title: "300 Majorca",
+    subtitle: "A High-End Residential Building",
+    description:
+      "300 Majorca was the first construction by United Developers in Miami, this is a 17 unit apartment building which was completed in 2009, designed by the renowned Coral Gables architectural firm Bellin & Pratt. The building has a mix of two town houses and 15 two-bedroom/two-bathroom apartments. Building amenities include under-cover parking, a fitness center, courtyard fountains, lush landscaping, and an outdoor barbecue terrace on the 4th floor. The building was sold to a Family Office, fully rented, in 2016.",
+    details: {
+      "Type of Asset": "Multi-Family Boutique Building",
+      Address: "300 Majorca Avenue, Coral Gables. Florida 33134",
+      "Year Built": "2008",
+      Units: "17 Units / 4 levels",
+      Occupancy: "97.4%",
+    },
+    city: "miami",
+  },
+  {
+    slug: "26-santillane",
+    title: "26 Santillane",
+    subtitle: "A Rental Income Apartment Building",
+    description:
+      "A one of a kind boutique building in the heart of Coral Gables. 26 Santillane is a 4 story building with 15 apartments that was completed in February of 2018, designed by the renowned Coral Gables architectural firm Bellin & Pratt. The building has 15 two-bedroom / two-bathroom apartments, parking, a GYM and designated storage areas for tenants.\n\nUDI's original strategy was to turn this building into a full AirBnB property, however, long term rent demand was very high during construction and management had the building fully rented at construction completion.",
+    details: {
+      "Type of Asset": "Multi-Family Boutique Rental Building",
+      Address: "26 Santillane Avenue, Coral Gables. Florida 33134",
+      "Year Built": "2018",
+      Units: "15 Units / 4 levels",
+      "Building Size": "18,342 Sq Ft",
+    },
+    city: "miami",
+  },
+  {
+    slug: "701-valencia",
+    title: "701 Valencia",
+    subtitle: "Luxury Residential Investment Opportunity",
+    description:
+      "Introducing 701 Valencia, an exclusive luxury residential building located in the heart of Coral Gables, one of South Florida's most desirable and affluent neighborhoods. This investment opportunity features premium rental-only units in a high-demand, supply-constrained market.",
+    details: {
+      "Type of Asset": "Luxury Residential (Rentals Only)",
+      Units: "25 High-End Residences",
+      "Rental Range": "$7,500 – $10,500 / month",
+      "Estimated Delivery": "Q2 2025",
+    },
+    highlights: [
+      "Rooftop Lounge with sweeping Coral Gables views",
+      "Rooftop Terrace for social and private events",
+      "Fully equipped Fitness Center",
+      "Business Center & Private Offices",
+      "Unparalleled skyline views",
+    ],
+    city: "miami",
+  },
+  {
+    slug: "1008-e-ponce-de-leon",
+    title: "1008 E Ponce de Leon",
+    subtitle: "New Mixed-Use Building",
+    description:
+      "A new mixed-use development under construction in the premier area of Coral Gables. Features strategic mix of residential and commercial space with excellent long-term value appreciation. Now available for pre-sale and investor participation.",
+    details: {
+      "Asset Type": "New Mixed-Use Development (Under Construction)",
+      "Estimated Delivery": "Q2 2027",
+      Location: "Premier area of Coral Gables",
+      "Residential Units": "67 units (750–1,200 sq.ft.)",
+      "Commercial Space": "10,000 sq.ft. of retail/office space",
+      FAR: "76,400 sq.ft.",
+    },
+    highlights: [
+      "High-demand market with strong fundamentals",
+      "Strategic mix of residential and commercial space",
+      "Excellent long-term value appreciation",
+      "Opportunity for both recurring income and capital gains",
+    ],
+    city: "miami",
+  },
+  {
+    slug: "queretaro-37",
+    title: "Querétaro 37",
+    subtitle: "Premium Investment – Boutique Rental Building in Roma Norte",
+    description:
+      "Position your portfolio at the heart of one of Latin America's most dynamic real estate markets with this brand-new boutique rental building in Roma Norte, one of Mexico City's most sought-after neighborhoods.",
+    details: {
+      "Asset Type": "Rental Income Boutique Building",
+      Location: "Roma Norte, Mexico City",
+      "Year Built": "2024",
+      "Total Units": "23",
+      Levels: "6",
+      "Building Size": "3,200 m²",
+    },
+    highlights: [
+      "In the cultural and culinary heart of Roma Norte",
+      "Surrounded by art galleries, restaurants, cafés, and vibrant nightlife",
+      "High demand from young professionals, digital nomads, and expats",
+      "Strong Airbnb and mid-term rental market performance",
+    ],
+    city: "mexico-city",
+  },
+  {
+    slug: "amsterdam-223",
+    title: "Amsterdam 223",
+    subtitle: "Residential Building in Mexico City",
+    description:
+      "La Condesa is the vibrant heart of Mexico City and Amsterdam Street is its main artery, its where over 40 restaurants and bars host a young urban local and foreign market. Amsterdam 223 was our first in Mexico City and the statement of our market entry into this sophisticated young market. Whether you invest to rent or to enjoy life here, this Project is a true gem.",
+    details: {
+      "Type of Asset": "A Residential Building in La Condesa, Mexico City",
+      "Year Built": "2025",
+      Units: "24",
+      "Apartment Sizes": "2 or 3 bedroom, 107 m² to 280 m²",
+      Parking: "2 spaces per apartment",
+      Amenities: "Private rooftop, Storage available",
+    },
+    city: "mexico-city",
+  },
+  {
+    slug: "baytown-tx",
+    title: "BAYTOWN, TX",
+    subtitle: "Ocean View Apartments",
+    description:
+      "A real estate investment opportunity near Baytown, TX (Houston Area). We are seeking strategic partners and private capital to bring this development to life.",
+    details: {
+      Location: "Baytown, TX",
+      "Total Lot Size": "9 acres",
+      "Development Plan": "Construction of 120 single-family homes",
+      "Home Size": "1,500 sq ft each",
+      "Individual Lot Size": "2,450 sq ft per unit",
+    },
+    highlights: [
+      "High projected return in one of Houston's fastest-growing suburbs",
+      "Ideal for rental income or affordable home sales",
+      "Close to schools, shopping centers, and major highways",
+      "Solid local job market fueled by nearby industrial and petrochemical zones",
+    ],
+    city: "houston",
+  },
+  {
+    slug: "6507-bella-noche",
+    title: "6507 Bella Noche Dr",
+    subtitle: "Residential Houses in Spring, TX",
+    description:
+      "This is a rare opportunity to invest in a newly built residential development located in one of the most desirable and fast-growing areas just northwest of Houston.",
+    details: {
+      Address: "6507 Bella Noche, Spring, TX 77379",
+      "Year Built": "2024",
+      "Total Lot Size": "2 Acres",
+      Units: "8 Residential Homes",
+      "Each Home": "2,500 sq. ft. on a 5,000 sq. ft. lot",
+    },
+    highlights: [
+      "8 brand-new homes under construction",
+      "Perfect setup for short-term rentals (Airbnb) or long-term leasing",
+      "Just 2 minutes from Grand Parkway (Loop 99)",
+      "Within the highly-rated Klein Oak School District",
+    ],
+    city: "houston",
+  },
+  {
+    slug: "2104-bringhurst",
+    title: "2104 Bringhurst St",
+    subtitle: "Premium Townhomes Near Downtown Houston",
+    description:
+      "Unlock an exceptional investment opportunity with six brand-new luxury townhomes currently under construction in the heart of Houston. Whether you're looking to grow your portfolio with cash-flowing assets or capitalize on Houston's rapid urban expansion, 2104 Bringhurst offers the perfect entry point into a booming market.",
+    details: {
+      Address: "2104 Bringhurst St, Houston, TX 77022",
+      "Asset Type": "Townhomes",
+      "Unit Size": "1,800 sq. ft. each",
+      Location: "10 minutes from Downtown Houston",
+      "Price Range": "$350K to $550K",
+    },
+    highlights: [
+      "Prime urban location with Downtown views",
+      "Close proximity to Houston's Medical Center District & NRG Stadium",
+      "Surging area with strong rental demand and capital appreciation potential",
+      "High-end, modern design tailored for both homeowners and rental markets",
+    ],
+    city: "houston",
+  },
+];

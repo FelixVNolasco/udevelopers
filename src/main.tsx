@@ -16,6 +16,7 @@ import ContactPage from "./pages/ContactPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import CookiesPage from "./pages/CookiesPage";
 import NewsletterPage from "./pages/NewsletterPage";
+import PropertyPage from "./pages/PropertyPage";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -40,6 +41,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="cookies" element={<CookiesPage />} />
           <Route path="newsletter" element={<NewsletterPage />} />
+          <Route path="properties/:slug" element={<PropertyPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
