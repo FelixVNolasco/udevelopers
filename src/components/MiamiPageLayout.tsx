@@ -1,3 +1,9 @@
+import miami2 from '../../public/images/miami/miami-2.jpg'
+import chartMiami from '../../public/images/general/mimami-1.jpg'
+import dataChart from '../../public/images/miami/miami-3-1.jpg'
+import bridge from '../../public/images/general/Signature-Bridge-e1742399359228.jpg'
+
+import captura from '../../public/images/general/Captura-de-pantalla-2025-03-19-173202.jpg'
 import {
   Plane,
   Landmark,
@@ -50,7 +56,7 @@ interface Props {
   cityImage?: string;
 }
 
-export default function MarketCityLayout({ data, cityImage }: Props) {
+export default function MiamiPageLayout({ data, cityImage }: Props) {
   return (
     <div>
       {/* Page header bar */}
@@ -63,7 +69,7 @@ export default function MarketCityLayout({ data, cityImage }: Props) {
       </div>
 
       {/* Intro Section */}
-      <section className="max-w-4xl mx-auto px-6 py-12">
+      <section className="max-w-7xl mx-auto px-6 py-12">
         <h2 className="text-[#335264] text-2xl font-light tracking-wider mb-8">
           {data.intro.title}
         </h2>
@@ -76,7 +82,7 @@ export default function MarketCityLayout({ data, cityImage }: Props) {
 
       {/* City Image */}
       {cityImage && (
-        <section className="max-w-4xl mx-auto px-6 pb-12">
+        <section className="max-w-7xl mx-auto px-6 pb-12">
           <img
             src={cityImage}
             alt={data.title}
@@ -87,7 +93,7 @@ export default function MarketCityLayout({ data, cityImage }: Props) {
 
       {/* International Trade & Entertainment */}
       <section className="">
-        <div className="max-w-4xl mx-auto px-6 py-16">
+        <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="md:ml-auto md:max-w-xl">
             <h2 className="text-[#335264] text-xl font-bold tracking-wider uppercase mb-6">
               {data.internationalTrade.title}
@@ -100,8 +106,8 @@ export default function MarketCityLayout({ data, cityImage }: Props) {
       </section>
 
       {/* Offer + Outlook */}
-      <section className="bg-[#ececec] max-w-7xl mx-auto">
-        <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12">
+      <section className="bg-[#e9e9e7] max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12">
           {/* Offer - left */}
           <div>
             <h2 className="text-[#335264] text-xl font-bold tracking-wider uppercase mb-6">
@@ -116,35 +122,25 @@ export default function MarketCityLayout({ data, cityImage }: Props) {
 
           {/* Outlook - right */}
           <div>
-            <h2 className="text-[#335264] text-xl font-bold tracking-wider uppercase mb-6">
-              {data.outlook.title}
-            </h2>
-            <div className="border border-[#335264] p-6">
-              <div className="grid grid-cols-2 gap-6">
-                {data.outlook.cards.map((card) => (
-                  <div key={card.title} className="text-center">
-                    <div className="flex justify-center mb-3">
-                      {iconMap[card.icon] || (
-                        <Home size={48} className="text-[#335264]" />
-                      )}
-                    </div>
-                    <h3 className="text-[#335264] text-lg font-semibold mb-2">
-                      {card.title}
-                    </h3>
-                    <p className="text-xs text-[#666] leading-relaxed">
-                      {card.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <img src={miami2} alt={"Miami outlook"} className="w-full object-cover" />
+          </div>
+        </div>
+        <div>
+          <img src={captura} alt={"Miami outlook"} className="w-full object-cover" />
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12">
+          <img src={chartMiami} alt={"Miami chart"} className="w-full object-cover" />
+          <div className='bg-[#274d60] h-full w-full flex items-center justify-center'>
+
+            <img src={dataChart} alt={"Miami data chart"} className="w-full object-cover" />
           </div>
         </div>
       </section>
 
       {/* Main Statistics */}
-      <section className="bg-[#335264] text-white max-w-7xl mx-auto">
-        <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
+      {/* <section className="bg-[#335264] text-white max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
           <div>
             {cityImage && (
               <img
@@ -167,11 +163,11 @@ export default function MarketCityLayout({ data, cityImage }: Props) {
             </ul>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Economic Focus */}
       <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12">
+        <div className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12">
           {/* Left: icons list */}
           <div className="bg-[#f0f0f0] p-10">
             <h2 className="text-[#335264] text-xl font-bold tracking-wider uppercase mb-4">
@@ -200,7 +196,7 @@ export default function MarketCityLayout({ data, cityImage }: Props) {
           <div>
             {cityImage && (
               <img
-                src={cityImage}
+                src={bridge}
                 alt={`${data.title} aerial`}
                 className="w-full h-full object-cover min-h-[400px]"
               />

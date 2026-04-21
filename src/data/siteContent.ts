@@ -1,3 +1,18 @@
+
+// import santillana1 from '../../public/images/211-santillane/211-Santillane_TERRENO.png'
+import santillana2 from '../../public/images/211-santillane/211SANTILLANE-Front-Elevation-scaled.jpg'
+// import santillana3 from '../../public/images/211-santillane/26-Santillane-New-Construction-Color-Options.jpg'
+import santillana4 from '../../public/images/211-santillane/SantillaneFront-1.jpg'
+// import santillana5 from '../../public/images/211-santillane/SantillaneFront-scaled.jpg'
+import santillana6 from '../../public/images/211-santillane/SantillaneGym-1.jpg'
+// import santillana7 from '../../public/images/211-santillane/SantillaneGym-scaled.jpg'
+import santillana8 from '../../public/images/211-santillane/SantillaneOpenView.jpg'
+import santillana9 from '../../public/images/211-santillane/SantillaneSideView.jpg'
+// import santillana10 from '../../public/images/211-santillane/front-26-santillane.jpg'
+// import santillana11 from '../../public/images/211-santillane/proppierties_0007_SantillaneFront.jpg'
+
+
+
 export const siteInfo = {
   name: "United Developers",
   shortName: "UDI",
@@ -173,11 +188,11 @@ export const miamiContent = {
   title: "MIAMI",
   intro: {
     title: "MIAMI",
-    description: `Coral Gables, also called "the City Beautiful," is a place where everything looks perfect: the houses are huge mansions surrounded by meticulous gardens and the streets have no trace of rubbish. Mediterranean style architecture predominates, although in some streets you can find colonial, French or Italian style buildings.
+    description: `Miami stands as a dynamic and ever-evolving city, known for its stunning waterfront views, diverse architecture, and vibrant cultural scene. From luxury high-rises in Brickell to the historic charm of Coconut Grove and the artistic energy of Wynwood, the city offers a unique blend of modern sophistication and tropical allure.
 
-The acceleration of the economy, the flow of the labor market, business tourism as well as the typology of people and/or young generation that currently represents the workforce of South Miami has had a huge impact on the real estate sector.
+The rapid economic growth, expanding job market, and inﬂux of young professionals and international investors have signiﬁcantly shaped Miami’s real estate sector. With a high demand for both short-term and long-term rentals, the city continues to attract individuals seeking a prime location to live, work, and invest.
 
-This movement or redistribution of the population and the Real Estate business has boosted investment in areas such as Coral Gables as a potential investment focus.`,
+This ongoing transformation has fueled real estate development across key neighborhoods, positioning Miami as a global hotspot for residential and commercial investment.`,
   },
   internationalTrade: {
     title: "INTERNATIONAL TRADE & ENTERTAINMENT.",
@@ -452,6 +467,7 @@ export const propertiesContent = {
       id: "211-santillane",
       title: "211 Santillane",
       location: "Miami, FL",
+      images: [] as string[],
       description:
         "UDI is raising $12 million dollars to be invested as equity in a 69 apartment building construction project. Interested parties should contact our management team for further details.",
     },
@@ -459,6 +475,7 @@ export const propertiesContent = {
       id: "highland-park",
       title: "Highland Park",
       location: "Miami Health District, FL",
+      images: [] as string[],
       description: `The Highland Park Residences is a prime 0.5-acre development site in the Miami Health District, the second-largest medical district in the U.S.
 
 UDI will build a 79 unit rental income building.`,
@@ -467,6 +484,16 @@ UDI will build a 79 unit rental income building.`,
       id: "amsterdam-107",
       title: "Amsterdam 107",
       location: "Col. Condesa, CDMX",
+      images: [
+        "/images/Amsterdam 107/Imagen1-2.jpeg",
+        "/images/Amsterdam 107/Imagen2.jpeg",
+        "/images/Amsterdam 107/Imagen3.jpeg",
+        "/images/Amsterdam 107/Imagen4.jpeg",
+        "/images/Amsterdam 107/Imagen3_000.png",
+        "/images/Amsterdam 107/Imagen4_000.png",
+        "/images/Amsterdam 107/Imagen9.png",
+        "/images/Amsterdam 107/Imagen10.png",
+      ],
       description: `Investment Type: Residential Development
 Location: Amsterdam #107 Col. Condesa CDMX
 Property Type: Multi-Unit Residential Building
@@ -501,6 +528,7 @@ Project Timeline: 24 months`,
       id: "baytown",
       title: "Baytown, TX — Ocean View Apartments",
       location: "Baytown, Greater Houston Area, TX",
+      images: [] as string[],
       description: `Total Land: 9 acres
 Project Scope: 120 single-family homes (1,500 sq ft each)
 Individual Lot Size: 2,450 sq ft per unit
@@ -517,6 +545,7 @@ Located in one of Houston's fastest-growing suburbs, this project offers a compe
       id: "conroe",
       title: "Conroe, TX",
       location: "Conroe, TX 77384",
+      images: [] as string[],
       description: `Asset Type: Townhomes | Status: Under Construction
 Total Lot Size: 44 Acres
 Units: 500 Townhomes | Each Unit: 1,800 sq. ft. on 5,000 sq. ft. lots
@@ -639,6 +668,9 @@ export const propertiesData: PropertyData[] = [
     city: "miami",
     images: [
       "/images/300-majorca/300-majorca-ave-coral-gables-fl-foto-del-edificio.jpg",
+      "/images/300-majorca/2.jpg",
+      "/images/300-majorca/3.jpg",
+      "/images/300-majorca/4.jpg",
     ],
     thumbnail: "/images/300-majorca/300-majorca-ave-coral-gables-fl-foto-del-edificio.jpg",
   },
@@ -657,9 +689,18 @@ export const propertiesData: PropertyData[] = [
     },
     city: "miami",
     images: [
-      "/images/properties-overview/proppierties_0001_2.jpg",
+      santillana2,
+      // santillana3,
+      santillana4,
+      // santillana5,
+      santillana6,
+      // santillana7,
+      santillana8,
+      santillana9,
+      // santillana10,
+      // santillana11,
     ],
-    thumbnail: "/images/properties-overview/proppierties_0001_2.jpg",
+    thumbnail: santillana2,
   },
   {
     slug: "701-valencia",

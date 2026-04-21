@@ -34,14 +34,14 @@ const heroSlides = [
     image: "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?w=1920&q=80",
     title: "INVESTING IN\nSOUTH FLORIDA",
   },
-  {
-    image: "https://images.unsplash.com/photo-1530089711124-9ca31fb9e863?w=1920&q=80",
-    title: "BUILDING VALUE IN\nHOUSTON, TEXAS",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?w=1920&q=80",
-    title: "EXPANDING INTO\nMEXICO CITY",
-  },
+  // {
+  //   image: "https://images.unsplash.com/photo-1530089711124-9ca31fb9e863?w=1920&q=80",
+  //   title: "BUILDING VALUE IN\nHOUSTON, TEXAS",
+  // },
+  // {
+  //   image: "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?w=1920&q=80",
+  //   title: "EXPANDING INTO\nMEXICO CITY",
+  // },
   {
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
     title: "REAL ESTATE\nINVESTMENT OPPORTUNITIES",

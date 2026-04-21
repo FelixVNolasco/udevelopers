@@ -1,11 +1,12 @@
 import { miamiContent } from "../data/siteContent";
-import MarketCityLayout from "../components/MarketCityLayout";
+import second from '../../public/images/miami/miami-3.jpg'
+import MiamiPageLayout from "@/components/MiamiPageLayout";
 
 export default function MiamiPage() {
   return (
-    <MarketCityLayout
+    <MiamiPageLayout
       data={miamiContent}
-      cityImage="https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?w=1200&q=80"
+      cityImage={second}
     />
   );
 }
