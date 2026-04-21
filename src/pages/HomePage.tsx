@@ -7,6 +7,24 @@ import {
   type CarouselApi,
 } from "../components/ui/carousel";
 
+import marcusMillichapLogo from "../../public/images/branding/marcusmillichaplogobw.png";
+import bpLogo from "../../public/images/branding/BP-logo-sansserif.png";
+import evLogo from "../../public/images/partners/EV-white.png";
+import lcgBuildersLogo from "../../public/images/partners/LCG-Builders.png";
+import taBuildersLogo from "../../public/images/partners/T.A.-builders.png";
+import cdmxHomesLogo from "../../public/images/mexico-city/CDMX-Homes.png";
+
+
+const alliancesList = [
+
+  cdmxHomesLogo,
+  evLogo,
+  taBuildersLogo,
+  marcusMillichapLogo,
+  lcgBuildersLogo,
+  bpLogo,
+];
+
 const heroSlides = [
   {
     image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&q=80",
@@ -32,15 +50,6 @@ const heroSlides = [
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920&q=80",
     title: "NEXT PROJECT\nOPPORTUNITIES",
   },
-];
-
-const partners = [
-  "CDMX HOMES",
-  "ENGEL & VÖLKERS",
-  "T.A. BUILDERS",
-  "Bellin & Pratt Architects, LLC",
-  "Marcus & Millichap",
-  "LGC BUILDERS",
 ];
 
 export default function HomePage() {
@@ -73,7 +82,7 @@ export default function HomePage() {
   }, [api, onSelect]);
 
   return (
-    <div>
+    <div className="mb-12">
       {/* Hero Carousel */}
       <section className="relative">
         <Carousel
@@ -105,9 +114,8 @@ export default function HomePage() {
           {heroSlides.map((_, i) => (
             <button
               key={i}
-              className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                i === current ? "bg-white" : "bg-white/50"
-              }`}
+              className={`w-2.5 h-2.5 rounded-full transition-colors ${i === current ? "bg-white" : "bg-white/50"
+                }`}
               onClick={() => api?.scrollTo(i)}
               aria-label={`Go to slide ${i + 1}`}
             />
@@ -116,22 +124,19 @@ export default function HomePage() {
       </section>
 
       {/* About + Team Section */}
-      <section className="grid md:grid-cols-2" id="real-estate">
-        {/* Left: About (dark teal) */}
-        <div className="bg-[#335264] text-white p-12 md:p-16">
-          <div className="text-7xl font-light text-[#8eaab8] leading-none mb-12 tracking-wider">
-            DD
-          </div>
+      <div id="real-estate">
+      {/* Mobile: simple stacked layout */}
+      <section className="md:hidden">
+        <div className="bg-[#335264] text-white p-10">
+          <img src="/images/branding/dd-white.png" alt="UDevelopers Logo" className="h-14 w-auto mb-10" />
           {homeContent.about.description.split("\n\n").map((p, i) => (
-            <p key={i} className="text-sm leading-relaxed mb-4 text-[#cfdde4]">
+            <p key={i} className="text-sm leading-relaxed mb-4 text-white">
               {p}
             </p>
           ))}
         </div>
-
-        {/* Right: Team (light gray) */}
-        <div className="bg-[#d9d9d9] p-12 md:p-16">
-          <h2 className="text-2xl text-[#335264] font-light mb-8">
+        <div className="bg-[#d9d9d9] p-10">
+          <h2 className="text-2xl text-[#335264] font-light mb-6">
             United Developers Team
           </h2>
           <p className="text-sm text-[#555] mb-4">
@@ -147,8 +152,52 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Desktop / Tablet: offset asymmetric layout */}
+      <section className="hidden md:block relative max-w-[1080px] mx-auto">
+        {/* Background image strip */}
+        <div
+          className="absolute top-0 right-0 w-1/2 h-[220px] bg-cover bg-center opacity-30"          
+        />
+        <div className="relative grid grid-cols-2">
+          {/* Left: About (dark teal) – full height */}
+          <div className="bg-[#335264] text-white px-16 pt-16 pb-20 row-span-full">
+            <img src="/images/branding/dd-white.png" alt="UDevelopers Logo" className="h-20 w-auto mb-16" />
+            {homeContent.about.description.split("\n\n").map((p, i) => (
+              <p key={i} className="text-sm leading-relaxed mb-4 text-white">
+                {p}
+              </p>
+            ))}
+          </div>
+
+          {/* Right: spacer top then Team panel */}
+          <div className="flex flex-col lg:w-11/12">
+            {/* Spacer to offset the right column downward */}
+            <div className="h-[220px]" />
+            {/* Team (light gray) */}
+            <div className="bg-[#d9d9d9] px-14 py-14 flex-1">
+              <h2 className="text-2xl text-[#335264] font-light mb-8">
+                United Developers Team
+              </h2>
+              <p className="text-sm text-[#555] mb-4">
+                {homeContent.team.description}
+              </p>
+              <ul className="space-y-2">
+                {homeContent.team.specializations.map((spec) => (
+                  <li key={spec} className="text-sm text-[#335264]">
+                    - {spec}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+        {/* Bottom teal bar */}
+        
+      </section>
+      </div>
+
       {/* Advisors / Alliances Section */}
-      <section className="grid md:grid-cols-2" id="advisors-alliances">
+      <section className="grid md:grid-cols-2 max-w-[1080px] mx-auto" id="advisors-alliances">
         {/* Left: Text */}
         <div className="bg-white p-12 md:p-16">
           <h2 className="text-xl text-[#335264] font-semibold mb-6">
@@ -162,19 +211,14 @@ export default function HomePage() {
         </div>
 
         {/* Right: Partners grid (dark bg) */}
-        <div className="bg-[#d9d9d9] p-12 md:p-16 flex flex-col items-center justify-center">
-          <div className="bg-[#335264] w-full p-4 mb-6" />
-          <div className="grid grid-cols-2 gap-8 w-full">
-            {partners.map((partner) => (
-              <div
-                key={partner}
-                className="flex items-center justify-center text-center"
-              >
-                <p className="text-[#335264] font-semibold text-sm tracking-wide">
-                  {partner}
-                </p>
-              </div>
-            ))}
+        <div className="bg-[#335264] p-6 flex flex-col items-center justify-center lg:w-11/12">
+
+          <div className="grid grid-cols-1 gap-8 w-full">
+            {
+              alliancesList.map((alliance, index) => (
+                <img src={alliance} alt="Alliance Logo" className={`w-[200px]  ${index % 2 === 0 ? 'ml-auto' : 'mr-auto'}`} key={index} />
+              ))
+            }
           </div>
         </div>
       </section>

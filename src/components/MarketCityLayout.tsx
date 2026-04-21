@@ -100,7 +100,7 @@ export default function MarketCityLayout({ data, cityImage }: Props) {
       </section>
 
       {/* Offer + Outlook */}
-      <section className="bg-[#ececec]">
+      <section className="bg-[#ececec] max-w-7xl mx-auto">
         <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12">
           {/* Offer - left */}
           <div>
@@ -143,7 +143,7 @@ export default function MarketCityLayout({ data, cityImage }: Props) {
       </section>
 
       {/* Main Statistics */}
-      <section className="bg-[#335264] text-white">
+      <section className="bg-[#335264] text-white max-w-7xl mx-auto">
         <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
           <div>
             {cityImage && (

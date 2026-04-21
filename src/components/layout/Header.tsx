@@ -1,28 +1,55 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu, X, Plus, Minus } from "lucide-react";
-import { navigationLinks } from "../../data/siteContent";
+import { useState, useCallback } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, ChevronDown } from "lucide-react";
+import { navigationLinks, siteInfo } from "../../data/siteContent";
+import epiLogo from "../../../public/images/branding/udevelopers-logo.png";
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetClose,
+} from "@/components/ui/sheet";
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from "@/components/ui/collapsible";
 
 export default function Header() {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileExpanded, setMobileExpanded] = useState<number | null>(null);
 
-  const toggleMobileExpanded = (idx: number) => {
-    setMobileExpanded(mobileExpanded === idx ? null : idx);
-  };
+  const location = useLocation();
+
+  const handleHashClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+      const hashIndex = path.indexOf("#");
+      if (hashIndex === -1) return; // no hash, let Link handle it
+
+      const basePath = path.slice(0, hashIndex) || "/";
+      const hash = path.slice(hashIndex);
+
+      // If we're already on the target page, scroll directly
+      if (location.pathname === basePath) {
+        e.preventDefault();
+        const el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      // Otherwise, Link navigates and ScrollToHash handles it
+    },
+    [location.pathname]
+  );
+
+  const closeMobile = () => setMobileOpen(false);
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
-        <Link to="/" className="flex-shrink-0" onClick={() => setMobileOpen(false)}>
-          <span className="text-[#335264] text-xl md:text-2xl tracking-[0.15em] font-light uppercase">
-            UNITE
-            <span className="font-normal">D</span>
-            <span className="text-[#c17f59] font-normal">D</span>
-            EVELOPERS
-          </span>
+        <Link to="/" className="flex-shrink-0">
+          <img src={epiLogo} alt="UDI Logo" className="h-4 w-auto" />
         </Link>
 
         {/* Desktop nav */}
@@ -52,7 +79,10 @@ export default function Header() {
                       <Link
                         to={child.path}
                         className="block px-5 py-2 text-sm text-[#6b8a9e] hover:text-[#335264] hover:bg-gray-50 transition-colors"
-                        onClick={() => setOpenDropdown(null)}
+                        onClick={(e) => {
+                          handleHashClick(e, child.path);
+                          setOpenDropdown(null);
+                        }}
                       >
                         {child.label}
                       </Link>
@@ -64,67 +94,108 @@ export default function Header() {
           ))}
         </ul>
 
-        {/* Mobile hamburger */}
-        <button
-          className="lg:hidden p-2 text-[#335264]"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </nav>
+        {/* Mobile Sheet trigger */}
+        <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+          <SheetTrigger asChild>
+            <button
+              className="lg:hidden p-2 text-[#335264]"
+              aria-label="Open navigation menu"
+            >
+              <Menu size={24} />
+            </button>
+          </SheetTrigger>
 
-      {/* Mobile menu overlay */}
-      {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 top-[65px] z-40 bg-white/95 backdrop-blur-sm overflow-y-auto">
-          <ul className="px-6 py-4 divide-y divide-gray-200">
-            {navigationLinks.map((link, idx) => (
-              <li key={idx}>
-                <div className="flex items-center justify-between">
-                  <Link
-                    to={link.path}
-                    className="block py-5 text-[#335264] font-bold text-sm tracking-wider uppercase"
-                    onClick={() => {
-                      if (!link.children) setMobileOpen(false);
-                    }}
-                  >
-                    {link.label.replace("\n", " ")}
-                  </Link>
-                  {link.children && (
-                    <button
-                      onClick={() => toggleMobileExpanded(idx)}
-                      className="p-2 text-[#6b8a9e]"
-                      aria-label="Expand submenu"
-                    >
-                      {mobileExpanded === idx ? (
-                        <Minus size={18} />
-                      ) : (
-                        <Plus size={18} />
-                      )}
-                    </button>
-                  )}
-                </div>
+          <SheetContent
+            side="left"
+            className="w-[300px] sm:w-[350px] p-0 flex flex-col"
+          >
+            {/* Sidebar Header */}
+            <SheetHeader className="px-6 py-5 border-b border-gray-100">
+              <SheetTitle className="sr-only">Navigation</SheetTitle>
+              <Link to="/" onClick={closeMobile} className="inline-block">
+                <img src={epiLogo} alt="UDI Logo" className="h-4 w-auto" />
+              </Link>
+            </SheetHeader>
 
-                {link.children && mobileExpanded === idx && (
-                  <ul className="pl-6 pb-4 space-y-3">
-                    {link.children.map((child) => (
-                      <li key={child.path}>
+            {/* Sidebar Content — scrollable */}
+            <div className="flex-1 overflow-y-auto py-2">
+              <nav aria-label="Mobile navigation">
+                {navigationLinks.map((link, idx) => (
+                  <div key={idx} className="border-b border-gray-100 last:border-b-0">
+                    {link.children ? (
+                      <Collapsible>
+                        <div className="flex items-center">
+                          <SheetClose asChild>
+                            <Link
+                              to={link.path}
+                              onClick={closeMobile}
+                              className="flex-1 px-6 py-4 text-[#335264] font-semibold text-sm tracking-wider uppercase"
+                            >
+                              {link.label.replace("\n", " ")}
+                            </Link>
+                          </SheetClose>
+                          <CollapsibleTrigger asChild>
+                            <button
+                              className="p-4 text-[#6b8a9e] hover:text-[#335264] transition-colors group"
+                              aria-label={`Expand ${link.label.replace("\n", " ")}`}
+                            >
+                              <ChevronDown
+                                size={16}
+                                className="transition-transform duration-200 group-data-[state=open]:rotate-180"
+                              />
+                            </button>
+                          </CollapsibleTrigger>
+                        </div>
+
+                        <CollapsibleContent className="overflow-hidden data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-top-1 data-[state=open]:slide-in-from-top-1 data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0">
+                          <ul className="px-6 pb-4 space-y-1">
+                            {link.children.map((child) => (
+                              <li key={child.path}>
+                                <SheetClose asChild>
+                                  <Link
+                                    to={child.path}
+                                    onClick={(e) => {
+                                      handleHashClick(e, child.path);
+                                      closeMobile();
+                                    }}
+                                    className="block px-3 py-2 text-sm text-[#6b8a9e] hover:text-[#335264] hover:bg-gray-50 rounded-md transition-colors"
+                                  >
+                                    {child.label}
+                                  </Link>
+                                </SheetClose>
+                              </li>
+                            ))}
+                          </ul>
+                        </CollapsibleContent>
+                      </Collapsible>
+                    ) : (
+                      <SheetClose asChild>
                         <Link
-                          to={child.path}
-                          className="block text-sm text-[#6b8a9e]"
-                          onClick={() => setMobileOpen(false)}
+                          to={link.path}
+                          onClick={closeMobile}
+                          className="block px-6 py-4 text-[#335264] font-semibold text-sm tracking-wider uppercase"
                         >
-                          {child.label}
+                          {link.label.replace("\n", " ")}
                         </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+                      </SheetClose>
+                    )}
+                  </div>
+                ))}
+              </nav>
+            </div>
+
+            {/* Sidebar Footer */}
+            <div className="border-t border-gray-100 px-6 py-4">
+              <p className="text-xs text-[#6b8a9e] leading-relaxed">
+                {siteInfo.address}
+              </p>
+              <p className="text-xs text-[#6b8a9e] mt-1">
+                {siteInfo.phone}
+              </p>
+            </div>
+          </SheetContent>
+        </Sheet>
+      </nav>
     </header>
   );
 }

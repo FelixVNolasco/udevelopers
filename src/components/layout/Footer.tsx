@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="bg-[#335264] text-white">
       <div className="max-w-5xl mx-auto px-6 pt-10 pb-6">
         {/* Top links row */}
-        <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-[#c4a882]">
+        <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-[#c3c1bc]">
           {footerLinks.map((link) => (
             <Link
               key={link.path}
@@ -22,19 +22,12 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <hr className="border-[#4a6b7d] my-6" />
+        <hr className="border-white my-6" />
 
         {/* Bottom section: logo + company info */}
         <div className="flex flex-col md:flex-row items-start justify-between gap-8">
           {/* Logo area */}
-          <div>
-            <div className="text-6xl font-light text-[#8eaab8] leading-none mb-3 tracking-wider">
-              DD
-            </div>
-            <p className="text-sm text-[#a0b8c4] mt-2">
-              {siteInfo.description}
-            </p>
-          </div>
+          <img src="/images/branding/simbolo-udevelopers-3.png" alt="United Developers International LLC" className="w-32" />
 
           {/* Company info */}
           <div className="text-right text-sm space-y-1">

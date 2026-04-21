@@ -1,88 +1,55 @@
-import { useState, type FormEvent } from "react";
+import ContactForm from "../components/ContactForm";
+import PageBanner from "../components/PageBanner";
+import { siteInfo } from "../data/siteContent";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    alert("Thank you for your message. We will get back to you soon.");
-    setFormData({ name: "", email: "", phone: "", message: "" });
-  };
-
   return (
-    <div>
-      <h1>Contact Us</h1>
+    <div className="mb-16">
+      <PageBanner
+        title="Contact Us"
+        subtitle="For inquiries about investment opportunities or any of our projects, please fill out the form below or contact us directly."
+      />
 
-      <section>
-        <p>
-          For inquiries about investment opportunities or any of our projects,
-          please fill out the form below or contact us directly.
-        </p>
-
-        <form onSubmit={handleSubmit}>
+      <div className="max-w-5xl mx-auto px-6 py-16 grid md:grid-cols-5 gap-12">
+        {/* Contact Info */}
+        <aside className="md:col-span-2 space-y-8">
           <div>
-            <label htmlFor="name">Name</label>
-            <br />
-            <input
-              id="name"
-              type="text"
-              value={formData.name}
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
-              required
-            />
+            <h2 className="text-lg font-semibold text-[#335264] mb-4">
+              Get in Touch
+            </h2>
+            <p className="text-sm text-[#555] leading-relaxed">
+              We'd love to hear from you. Reach out for investment
+              opportunities, project details, or general inquiries.
+            </p>
           </div>
 
-          <div>
-            <label htmlFor="email">Email</label>
-            <br />
-            <input
-              id="email"
-              type="email"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-              required
-            />
+          <div className="space-y-5">
+            <div className="flex items-start gap-3">
+              <MapPin size={18} className="text-[#335264] mt-0.5 shrink-0" />
+              <p className="text-sm text-[#555]">{siteInfo.address}</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <Phone size={18} className="text-[#335264] mt-0.5 shrink-0" />
+              <p className="text-sm text-[#555]">{siteInfo.phone}</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <Mail size={18} className="text-[#335264] mt-0.5 shrink-0" />
+              <a
+                href={`mailto:${siteInfo.email}`}
+                className="text-sm text-[#335264] hover:underline"
+              >
+                {siteInfo.email}
+              </a>
+            </div>
           </div>
+        </aside>
 
-          <div>
-            <label htmlFor="phone">Phone</label>
-            <br />
-            <input
-              id="phone"
-              type="tel"
-              value={formData.phone}
-              onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
-              }
-            />
-          </div>
-
-          <div>
-            <label htmlFor="message">Message</label>
-            <br />
-            <textarea
-              id="message"
-              rows={5}
-              value={formData.message}
-              onChange={(e) =>
-                setFormData({ ...formData, message: e.target.value })
-              }
-              required
-            />
-          </div>
-
-          <button type="submit">Send Message</button>
-        </form>
-      </section>
+        {/* Form */}
+        <div className="md:col-span-3">
+          <ContactForm />
+        </div>
+      </div>
     </div>
   );
 }

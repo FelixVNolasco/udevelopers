@@ -27,8 +27,8 @@ export const navigationLinks = [
     path: "/our-market",
     children: [
       { label: "Miami", path: "/miami" },
-      { label: "Houston", path: "/houston" },
-      { label: "México City", path: "/mexico-city" },
+      // { label: "Houston", path: "/houston" },
+      // { label: "México City", path: "/mexico-city" },
     ],
   },
   {
@@ -43,20 +43,20 @@ export const navigationLinks = [
         label: "1008 E Ponce de Leon (Miami)",
         path: "/properties/1008-e-ponce-de-leon",
       },
-      { label: "Querétaro 37 (CDMX)", path: "/properties/queretaro-37" },
-      { label: "Amsterdam 223 (CDMX)", path: "/properties/amsterdam-223" },
-      {
-        label: "2104 Bringhurst St (Houston)",
-        path: "/properties/2104-bringhurst",
-      },
-      {
-        label: "6507 Bella Noche Dr (Houston)",
-        path: "/properties/6507-bella-noche",
-      },
-      {
-        label: "BAYTOWN, TX (Houston)",
-        path: "/properties/baytown-tx",
-      },
+      // { label: "Querétaro 37 (CDMX)", path: "/properties/queretaro-37" },
+      // { label: "Amsterdam 223 (CDMX)", path: "/properties/amsterdam-223" },
+      // {
+      //   label: "2104 Bringhurst St (Houston)",
+      //   path: "/properties/2104-bringhurst",
+      // },
+      // {
+      //   label: "6507 Bella Noche Dr (Houston)",
+      //   path: "/properties/6507-bella-noche",
+      // },
+      // {
+      //   label: "BAYTOWN, TX (Houston)",
+      //   path: "/properties/baytown-tx",
+      // },
     ],
   },
   {
@@ -597,6 +597,8 @@ export interface PropertyData {
   details: Record<string, string>;
   highlights?: string[];
   city: "miami" | "houston" | "mexico-city";
+  images: string[];
+  thumbnail: string;
 }
 
 export const propertiesData: PropertyData[] = [
@@ -614,6 +616,12 @@ export const propertiesData: PropertyData[] = [
       "Building Size": "67,736 Sq Ft",
     },
     city: "miami",
+    images: [
+      "/images/biltmore-parc/Baltimore-Parc.jpg",
+      "/images/biltmore-parc/Biltmore-Photo-1.jpg",
+      "/images/biltmore-parc/biltmore-1.jpg",
+    ],
+    thumbnail: "/images/biltmore-parc/Baltimore-Parc.jpg",
   },
   {
     slug: "300-majorca",
@@ -629,6 +637,10 @@ export const propertiesData: PropertyData[] = [
       Occupancy: "97.4%",
     },
     city: "miami",
+    images: [
+      "/images/300-majorca/300-majorca-ave-coral-gables-fl-foto-del-edificio.jpg",
+    ],
+    thumbnail: "/images/300-majorca/300-majorca-ave-coral-gables-fl-foto-del-edificio.jpg",
   },
   {
     slug: "26-santillane",
@@ -644,6 +656,10 @@ export const propertiesData: PropertyData[] = [
       "Building Size": "18,342 Sq Ft",
     },
     city: "miami",
+    images: [
+      "/images/properties-overview/proppierties_0001_2.jpg",
+    ],
+    thumbnail: "/images/properties-overview/proppierties_0001_2.jpg",
   },
   {
     slug: "701-valencia",
@@ -665,6 +681,18 @@ export const propertiesData: PropertyData[] = [
       "Unparalleled skyline views",
     ],
     city: "miami",
+    images: [
+      "/images/701-valencia/FrontDayV107.jpg",
+      "/images/701-valencia/LobbyV107.jpg",
+      "/images/701-valencia/Lobby2V107.jpg",
+      "/images/701-valencia/LoungeV107.jpg",
+      "/images/701-valencia/Lounge3V107.jpg",
+      "/images/701-valencia/Lounge4V107.jpg",
+      "/images/701-valencia/RooftopV107.jpg",
+      "/images/701-valencia/Rooftop5sunsetV107.jpg",
+      "/images/701-valencia/NightV107.jpg",
+    ],
+    thumbnail: "/images/701-valencia/FrontDayV107.jpg",
   },
   {
     slug: "1008-e-ponce-de-leon",
@@ -687,106 +715,141 @@ export const propertiesData: PropertyData[] = [
       "Opportunity for both recurring income and capital gains",
     ],
     city: "miami",
-  },
-  {
-    slug: "queretaro-37",
-    title: "Querétaro 37",
-    subtitle: "Premium Investment – Boutique Rental Building in Roma Norte",
-    description:
-      "Position your portfolio at the heart of one of Latin America's most dynamic real estate markets with this brand-new boutique rental building in Roma Norte, one of Mexico City's most sought-after neighborhoods.",
-    details: {
-      "Asset Type": "Rental Income Boutique Building",
-      Location: "Roma Norte, Mexico City",
-      "Year Built": "2024",
-      "Total Units": "23",
-      Levels: "6",
-      "Building Size": "3,200 m²",
-    },
-    highlights: [
-      "In the cultural and culinary heart of Roma Norte",
-      "Surrounded by art galleries, restaurants, cafés, and vibrant nightlife",
-      "High demand from young professionals, digital nomads, and expats",
-      "Strong Airbnb and mid-term rental market performance",
+    images: [
+      "/images/1008-e-ponce-de-leon/1008-E-Ponce-de-Leon.png",
+      "/images/1008-e-ponce-de-leon/ponce-leon-2.png",
+      "/images/1008-e-ponce-de-leon/ponce-leon-3.png",
     ],
-    city: "mexico-city",
+    thumbnail: "/images/1008-e-ponce-de-leon/1008-E-Ponce-de-Leon.png",
   },
-  {
-    slug: "amsterdam-223",
-    title: "Amsterdam 223",
-    subtitle: "Residential Building in Mexico City",
-    description:
-      "La Condesa is the vibrant heart of Mexico City and Amsterdam Street is its main artery, its where over 40 restaurants and bars host a young urban local and foreign market. Amsterdam 223 was our first in Mexico City and the statement of our market entry into this sophisticated young market. Whether you invest to rent or to enjoy life here, this Project is a true gem.",
-    details: {
-      "Type of Asset": "A Residential Building in La Condesa, Mexico City",
-      "Year Built": "2025",
-      Units: "24",
-      "Apartment Sizes": "2 or 3 bedroom, 107 m² to 280 m²",
-      Parking: "2 spaces per apartment",
-      Amenities: "Private rooftop, Storage available",
-    },
-    city: "mexico-city",
-  },
-  {
-    slug: "baytown-tx",
-    title: "BAYTOWN, TX",
-    subtitle: "Ocean View Apartments",
-    description:
-      "A real estate investment opportunity near Baytown, TX (Houston Area). We are seeking strategic partners and private capital to bring this development to life.",
-    details: {
-      Location: "Baytown, TX",
-      "Total Lot Size": "9 acres",
-      "Development Plan": "Construction of 120 single-family homes",
-      "Home Size": "1,500 sq ft each",
-      "Individual Lot Size": "2,450 sq ft per unit",
-    },
-    highlights: [
-      "High projected return in one of Houston's fastest-growing suburbs",
-      "Ideal for rental income or affordable home sales",
-      "Close to schools, shopping centers, and major highways",
-      "Solid local job market fueled by nearby industrial and petrochemical zones",
-    ],
-    city: "houston",
-  },
-  {
-    slug: "6507-bella-noche",
-    title: "6507 Bella Noche Dr",
-    subtitle: "Residential Houses in Spring, TX",
-    description:
-      "This is a rare opportunity to invest in a newly built residential development located in one of the most desirable and fast-growing areas just northwest of Houston.",
-    details: {
-      Address: "6507 Bella Noche, Spring, TX 77379",
-      "Year Built": "2024",
-      "Total Lot Size": "2 Acres",
-      Units: "8 Residential Homes",
-      "Each Home": "2,500 sq. ft. on a 5,000 sq. ft. lot",
-    },
-    highlights: [
-      "8 brand-new homes under construction",
-      "Perfect setup for short-term rentals (Airbnb) or long-term leasing",
-      "Just 2 minutes from Grand Parkway (Loop 99)",
-      "Within the highly-rated Klein Oak School District",
-    ],
-    city: "houston",
-  },
-  {
-    slug: "2104-bringhurst",
-    title: "2104 Bringhurst St",
-    subtitle: "Premium Townhomes Near Downtown Houston",
-    description:
-      "Unlock an exceptional investment opportunity with six brand-new luxury townhomes currently under construction in the heart of Houston. Whether you're looking to grow your portfolio with cash-flowing assets or capitalize on Houston's rapid urban expansion, 2104 Bringhurst offers the perfect entry point into a booming market.",
-    details: {
-      Address: "2104 Bringhurst St, Houston, TX 77022",
-      "Asset Type": "Townhomes",
-      "Unit Size": "1,800 sq. ft. each",
-      Location: "10 minutes from Downtown Houston",
-      "Price Range": "$350K to $550K",
-    },
-    highlights: [
-      "Prime urban location with Downtown views",
-      "Close proximity to Houston's Medical Center District & NRG Stadium",
-      "Surging area with strong rental demand and capital appreciation potential",
-      "High-end, modern design tailored for both homeowners and rental markets",
-    ],
-    city: "houston",
-  },
+  // {
+  //   slug: "queretaro-37",
+  //   title: "Querétaro 37",
+  //   subtitle: "Premium Investment – Boutique Rental Building in Roma Norte",
+  //   description:
+  //     "Position your portfolio at the heart of one of Latin America's most dynamic real estate markets with this brand-new boutique rental building in Roma Norte, one of Mexico City's most sought-after neighborhoods.",
+  //   details: {
+  //     "Asset Type": "Rental Income Boutique Building",
+  //     Location: "Roma Norte, Mexico City",
+  //     "Year Built": "2024",
+  //     "Total Units": "23",
+  //     Levels: "6",
+  //     "Building Size": "3,200 m²",
+  //   },
+  //   highlights: [
+  //     "In the cultural and culinary heart of Roma Norte",
+  //     "Surrounded by art galleries, restaurants, cafés, and vibrant nightlife",
+  //     "High demand from young professionals, digital nomads, and expats",
+  //     "Strong Airbnb and mid-term rental market performance",
+  //   ],
+  //   city: "mexico-city",
+  //   images: [
+  //     "/images/queretaro-37/quetaro-1.jpg",
+  //     "/images/queretaro-37/alameda-of-queretaro-mexico-2025-03-05-20-28-25-utc.jpg",
+  //   ],
+  //   thumbnail: "/images/queretaro-37/quetaro-1.jpg",
+  // },
+  // {
+  //   slug: "amsterdam-223",
+  //   title: "Amsterdam 223",
+  //   subtitle: "Residential Building in Mexico City",
+  //   description:
+  //     "La Condesa is the vibrant heart of Mexico City and Amsterdam Street is its main artery, its where over 40 restaurants and bars host a young urban local and foreign market. Amsterdam 223 was our first in Mexico City and the statement of our market entry into this sophisticated young market. Whether you invest to rent or to enjoy life here, this Project is a true gem.",
+  //   details: {
+  //     "Type of Asset": "A Residential Building in La Condesa, Mexico City",
+  //     "Year Built": "2025",
+  //     Units: "24",
+  //     "Apartment Sizes": "2 or 3 bedroom, 107 m² to 280 m²",
+  //     Parking: "2 spaces per apartment",
+  //     Amenities: "Private rooftop, Storage available",
+  //   },
+  //   city: "mexico-city",
+  //   images: [
+  //     "/images/mexico-city/fondo-mexico-1.png",
+  //     "/images/mexico-city/fondo-mexico.png",
+  //   ],
+  //   thumbnail: "/images/mexico-city/fondo-mexico-1.png",
+  // },
+  // {
+  //   slug: "baytown-tx",
+  //   title: "BAYTOWN, TX",
+  //   subtitle: "Ocean View Apartments",
+  //   description:
+  //     "A real estate investment opportunity near Baytown, TX (Houston Area). We are seeking strategic partners and private capital to bring this development to life.",
+  //   details: {
+  //     Location: "Baytown, TX",
+  //     "Total Lot Size": "9 acres",
+  //     "Development Plan": "Construction of 120 single-family homes",
+  //     "Home Size": "1,500 sq ft each",
+  //     "Individual Lot Size": "2,450 sq ft per unit",
+  //   },
+  //   highlights: [
+  //     "High projected return in one of Houston's fastest-growing suburbs",
+  //     "Ideal for rental income or affordable home sales",
+  //     "Close to schools, shopping centers, and major highways",
+  //     "Solid local job market fueled by nearby industrial and petrochemical zones",
+  //   ],
+  //   city: "houston",
+  //   images: [
+  //     "/images/baytown-tx/baytown.jpg",
+  //     "/images/baytown-tx/baytown-1.jpg",
+  //     "/images/baytown-tx/BAYTOWN.png",
+  //     "/images/baytown-tx/BAYTOWN_2.png",
+  //     "/images/baytown-tx/BARKALOO-LOCATION.jpg",
+  //   ],
+  //   thumbnail: "/images/baytown-tx/baytown.jpg",
+  // },
+  // {
+  //   slug: "6507-bella-noche",
+  //   title: "6507 Bella Noche Dr",
+  //   subtitle: "Residential Houses in Spring, TX",
+  //   description:
+  //     "This is a rare opportunity to invest in a newly built residential development located in one of the most desirable and fast-growing areas just northwest of Houston.",
+  //   details: {
+  //     Address: "6507 Bella Noche, Spring, TX 77379",
+  //     "Year Built": "2024",
+  //     "Total Lot Size": "2 Acres",
+  //     Units: "8 Residential Homes",
+  //     "Each Home": "2,500 sq. ft. on a 5,000 sq. ft. lot",
+  //   },
+  //   highlights: [
+  //     "8 brand-new homes under construction",
+  //     "Perfect setup for short-term rentals (Airbnb) or long-term leasing",
+  //     "Just 2 minutes from Grand Parkway (Loop 99)",
+  //     "Within the highly-rated Klein Oak School District",
+  //   ],
+  //   city: "houston",
+  //   images: [
+  //     "/images/properties-overview/proppierties_0004_Model_House_1.jpg",
+  //     "/images/properties-overview/proppierties_0005_Model_House_2.jpg",
+  //     "/images/properties-overview/proppierties_0006_Model_House_4.jpg",
+  //   ],
+  //   thumbnail: "/images/properties-overview/proppierties_0004_Model_House_1.jpg",
+  // },
+  // {
+  //   slug: "2104-bringhurst",
+  //   title: "2104 Bringhurst St",
+  //   subtitle: "Premium Townhomes Near Downtown Houston",
+  //   description:
+  //     "Unlock an exceptional investment opportunity with six brand-new luxury townhomes currently under construction in the heart of Houston. Whether you're looking to grow your portfolio with cash-flowing assets or capitalize on Houston's rapid urban expansion, 2104 Bringhurst offers the perfect entry point into a booming market.",
+  //   details: {
+  //     Address: "2104 Bringhurst St, Houston, TX 77022",
+  //     "Asset Type": "Townhomes",
+  //     "Unit Size": "1,800 sq. ft. each",
+  //     Location: "10 minutes from Downtown Houston",
+  //     "Price Range": "$350K to $550K",
+  //   },
+  //   highlights: [
+  //     "Prime urban location with Downtown views",
+  //     "Close proximity to Houston's Medical Center District & NRG Stadium",
+  //     "Surging area with strong rental demand and capital appreciation potential",
+  //     "High-end, modern design tailored for both homeowners and rental markets",
+  //   ],
+  //   city: "houston",
+  //   images: [
+  //     "/images/properties-overview/proppierties_0003_IMG-02.jpg",
+  //     "/images/properties-overview/proppierties_0002_Imagen1.jpg",
+  //   ],
+  //   thumbnail: "/images/properties-overview/proppierties_0003_IMG-02.jpg",
+  // },
 ];
