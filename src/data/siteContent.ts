@@ -1,14 +1,14 @@
 
 // import santillana1 from '../../public/images/211-santillane/211-Santillane_TERRENO.png'
 import santillana2 from '../../public/images/211-santillane/211SANTILLANE-Front-Elevation-scaled.jpg'
-// import santillana3 from '../../public/images/211-santillane/26-Santillane-New-Construction-Color-Options.jpg'
 import santillana4 from '../../public/images/211-santillane/SantillaneFront-1.jpg'
-// import santillana5 from '../../public/images/211-santillane/SantillaneFront-scaled.jpg'
 import santillana6 from '../../public/images/211-santillane/SantillaneGym-1.jpg'
-// import santillana7 from '../../public/images/211-santillane/SantillaneGym-scaled.jpg'
 import santillana8 from '../../public/images/211-santillane/SantillaneOpenView.jpg'
 import santillana9 from '../../public/images/211-santillane/SantillaneSideView.jpg'
+// import santillana3 from '../../public/images/211-santillane/26-Santillane-New-Construction-Color-Options.jpg'
+// import santillana5 from '../../public/images/211-santillane/SantillaneFront-scaled.jpg'
 // import santillana10 from '../../public/images/211-santillane/front-26-santillane.jpg'
+// import santillana7 from '../../public/images/211-santillane/SantillaneGym-scaled.jpg'
 // import santillana11 from '../../public/images/211-santillane/proppierties_0007_SantillaneFront.jpg'
 
 
@@ -38,17 +38,8 @@ export const navigationLinks = [
     ],
   },
   {
-    label: "OUR MARKET",
-    path: "/our-market",
-    children: [
-      { label: "Miami", path: "/miami" },
-      // { label: "Houston", path: "/houston" },
-      // { label: "México City", path: "/mexico-city" },
-    ],
-  },
-  {
     label: "OUR PROJECTS",
-    path: "/our-market",
+    path: "/next-projects-opportunities",
     children: [
       { label: "Biltmore Parc (Miami)", path: "/properties/biltmore-parc" },
       { label: "26 Santillane (Miami)", path: "/properties/26-santillane" },
@@ -467,7 +458,13 @@ export const propertiesContent = {
       id: "211-santillane",
       title: "211 Santillane",
       location: "Miami, FL",
-      images: [] as string[],
+      images: [
+        santillana2,
+        santillana4,
+        santillana6,
+        santillana8,
+        santillana9,
+      ] as string[],
       description:
         "UDI is raising $12 million dollars to be invested as equity in a 69 apartment building construction project. Interested parties should contact our management team for further details.",
     },
@@ -475,7 +472,23 @@ export const propertiesContent = {
       id: "highland-park",
       title: "Highland Park",
       location: "Miami Health District, FL",
-      images: [] as string[],
+      images: [
+        "/images/Highland Park/slider/9e436a5223284a5b-scaled.jpg",
+        "/images/Highland Park/slider/09fc29eaba074d75.jpg",
+        "/images/Highland Park/slider/9ffd2b861ab4-scaled.jpg",
+        "/images/Highland Park/slider/14a7f91205004ae9-scaled.jpg",
+        "/images/Highland Park/slider/23ead31223c242ad.jpg",
+        "/images/Highland Park/slider/40a563784d3e46e5.jpg",
+        "/images/Highland Park/slider/aa629e595bf64bc3-scaled.jpg",
+        "/images/Highland Park/slider/bbb10471d7394015.jpg",
+        "/images/Highland Park/slider/cbe5ec3440a04cd5-scaled.jpg",
+        "/images/Highland Park/slider/ea5c008ef128472c-scaled (1).jpg",
+        "/images/Highland Park/slider/ea5c008ef128472c-scaled.jpg",
+        "/images/Highland Park/slider/f32cc38c411e4414.jpg",
+        "/images/Highland Park/slider/fa87c03760464fe8.jpg",
+        "/images/Highland Park/slider/Screenshot-2025-01-30-at-13.41.57.jpg",
+        "/images/Highland Park/slider/unnamed (1).png",
+      ] as string[],
       description: `The Highland Park Residences is a prime 0.5-acre development site in the Miami Health District, the second-largest medical district in the U.S.
 
 UDI will build a 79 unit rental income building.`,
@@ -528,7 +541,11 @@ Project Timeline: 24 months`,
       id: "baytown",
       title: "Baytown, TX — Ocean View Apartments",
       location: "Baytown, Greater Houston Area, TX",
-      images: [] as string[],
+      images: [
+        "/images/baytown-tx/BARKALOO-LOCATION.jpg",
+        "/images/baytown-tx/BAYTOWN_2.png",
+        "/images/baytown-tx/BAYTOWN.png",
+      ] as string[],
       description: `Total Land: 9 acres
 Project Scope: 120 single-family homes (1,500 sq ft each)
 Individual Lot Size: 2,450 sq ft per unit
@@ -545,7 +562,7 @@ Located in one of Houston's fastest-growing suburbs, this project offers a compe
       id: "conroe",
       title: "Conroe, TX",
       location: "Conroe, TX 77384",
-      images: [] as string[],
+      images: ["/images/Conroe/slider/Model_House_3-1.png", "/images/Conroe/slider/proppierties_0005_Model_House_2.jpg"] as string[],
       description: `Asset Type: Townhomes | Status: Under Construction
 Total Lot Size: 44 Acres
 Units: 500 Townhomes | Each Unit: 1,800 sq. ft. on 5,000 sq. ft. lots
@@ -579,6 +596,10 @@ export const realEstateFundContent = {
     description: `UDI is planning to invite a group of Investors to participate in the acquisition of land and construction of 500 apartments and single-family homes in Miami Florida and Houston Texas.
 
 The portfolio will be stabilized and sold soon after completion. Investors will have the option of multiple exit strategies as well as the right to maintain ownership of the assets. Interested parties should contact management for further details.`,
+  },
+  images: {
+    ddGraphic: "/images/branding/DD-graphic.png",
+    land: "/images/general/land.jpg",
   },
 };
 
@@ -690,15 +711,14 @@ export const propertiesData: PropertyData[] = [
     city: "miami",
     images: [
       santillana2,
-      // santillana3,
+      
       santillana4,
-      // santillana5,
+      
       santillana6,
-      // santillana7,
+    
       santillana8,
       santillana9,
-      // santillana10,
-      // santillana11,
+      
     ],
     thumbnail: santillana2,
   },

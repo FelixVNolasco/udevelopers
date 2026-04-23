@@ -5,7 +5,6 @@ import "./index.css";
 
 import Layout from "./components/layout/Layout";
 import HomePage from "./pages/HomePage";
-import OurMarketPage from "./pages/OurMarketPage";
 import MiamiPage from "./pages/MiamiPage";
 import HoustonPage from "./pages/HoustonPage";
 import MexicoCityPage from "./pages/MexicoCityPage";
@@ -24,7 +23,6 @@ createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="our-market" element={<OurMarketPage />} />
           <Route path="miami" element={<MiamiPage />} />
           <Route path="houston" element={<HoustonPage />} />
           <Route path="mexico-city" element={<MexicoCityPage />} />
